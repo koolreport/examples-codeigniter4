@@ -1,60 +1,101 @@
-# CodeIgniter 4 Framework
-
-## What is CodeIgniter?
+# KoolReport in CodeIgniter
 
 CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
 More information can be found at the [official site](https://codeigniter.com).
 
-This repository holds the distributable version of the framework.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+KoolReport is reporting framework and can be integrated into Laravel or any other MVC framework. KoolReport help you to create data report faster and easier.
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+In this repository, we would like to demonstrate how KoolReport can be used in Laravel.
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+# Installation
 
-## Important Change with index.php
+Run `composer` command in your Laravel directory to install `koolreport/core` and `koolreport/codeigniter4`
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+```
+composer require koolreport/core
+composer require koolreport/codeigniter4
+```
+or install `koolreport/pro` if you have a license for it
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+```
+composer require koolreport/pro
+```
 
-**Please** read the user guide for a better explanation of how CI4 works!
+# Create reports using friendship trait for setting up assets and datasources
 
-## Repository Management
+1. Inside `app` directory, create `reports` subdirectory to hold your reports.
+2. Create `MyReport.php` and `MyReport.view.php` inside `reports` directory. Assign `App\reports` namespace for the report if you want it can be autoloaded. Otherwise, you could load the report directly in your controller when using it. Please see the contents of two files in our repository.
+3. Add \koolreport\laravel\Friendship trait to your report like following:
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+```
+class MyReport extends \koolreport\KoolReport
+{
+    use \koolreport\codeigniter4\Friendship;
+    ...
+```
+This trait would help the report to publish js, css assets to Laravel's `public` directory in a subdirectory called `asset/koolreport_assets` as well as allow using Laravel's database settings in the report.
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+## Create route and action
 
-## Contributing
+In `app/Config/routes.php`, create a route to your report and its action with a controller:
 
-We welcome contributions from the community.
+```
+$routes->get('/customReport', 'Home::customReport');
+```
 
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
+In the `Home` controller (`app/Controllers/Home.php`), create the action method:
 
-## Server Requirements
+```
+	public function customReport()
+	{
+		$report = new \App\reports\MyReport();
+		$report_content = $report->run()->render(true);
+		return view("customReport", ["report_content" => $report_content]);
+	}
+```
+Create the report view `app/views/customReport.php` and put your report content anywhere you like:
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+```
+<html>
+...
+<?php echo $report_content; ?>
+</html>
+```
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+All done!
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+## View result
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+Put your CodeIgniter app on your server/localhost. Then you can access after running
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+```
+http://locahost/examples-codeigniter4/public/customReport
+```
+
+![combochart](combochart.png)
+
+
+## CSRF field/token in form submissions and xhr requests
+
+In case you enable csrf security for your app, in reports with form submission or xhr request users need to add csrf field/token to the form and request for server response to work.
+
+For example, adding csrf field to form:
+
+```
+    <form method="post">
+        <?php echo csrf_field(); ?>
+```
+or add csrf token to request:
+
+```
+    <script>
+        subReport.update("SaleByCountriesReport", {
+            <?php echo csrf_token(); ?>: '<?php echo csrf_token(); ?>'
+        });
+```
+
+# Summary
+
+KoolReport is a great php reporting framework. You can use KoolReport alone with pure php or inside any modern MVC frameworks like Laravel, CakePHP, CodeIgniter, Yii2. If you have any questions regarding KoolReport, free free to contact us at [our forum](https://www.koolreport.com/forum/topics) or email to [support@koolreport.com](mailto:support@koolreport.com).
+
+__Happy Reporting!__
