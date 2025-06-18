@@ -1,10 +1,11 @@
 <?php
 include FCPATH . "helpers/common.php";
 $report_path = APPPATH . uri_string() . "/";
-$example = json_decode(file_get_contents($report_path . "_example.json"),true);
+$example = json_decode(file_get_contents($report_path . "_example.json"), true);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,9 +14,9 @@ $example = json_decode(file_get_contents($report_path . "_example.json"),true);
     <meta name="keywords" content="php reporting framework">
     <link rel="shortcut icon" href="<?php echo $root_url; ?>/assets/images/bar.png">
     <title>
-        <?php 
-            echo $example["title"] . " - ";
-        ?> 
+        <?php
+        echo $example["title"] . " - ";
+        ?>
         KoolReport Examples &amp; Demonstration
     </title>
 
@@ -25,7 +26,7 @@ $example = json_decode(file_get_contents($report_path . "_example.json"),true);
 
     <link href="<?php echo $root_url; ?>/assets/theme/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo $root_url; ?>/assets/theme/css/main.css" rel="stylesheet">
-    
+
     <script type="text/javascript" src="<?php echo $root_url; ?>/assets/theme/js/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo $root_url; ?>/assets/theme/js/bootstrap.bundle.min.js"></script>
 
@@ -33,18 +34,22 @@ $example = json_decode(file_get_contents($report_path . "_example.json"),true);
     <script type="text/javascript" src="<?php echo $root_url; ?>/assets/js/showdown.js"></script>
 
 </head>
+
 <body>
     <?php include FCPATH . "helpers/nav.php"; ?>
     <?php include FCPATH . "helpers/online_link.php"; ?>
     <main role="main" class="container">
-        <?php 
-            echo $report_content;
+        <?php
+        echo $report_content;
         ?>
-        <?php 
-            include FCPATH . "helpers/example_meta.php"; 
+        <?php
+        include FCPATH . "helpers/example_meta.php";
         ?>
     </main>
     <?php include FCPATH . "helpers/footer.php"; ?>
-    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+    <script type="text/javascript">
+        hljs.initHighlightingOnLoad();
+    </script>
 </body>
+
 </html>

@@ -9,17 +9,17 @@ include "helpers/common.php";
     <meta name="description" content="KoolReport is an intuitive and flexible Open Source PHP Reporting Framework for faster and easier data report delivery.">
     <meta name="author" content="KoolPHP Inc">
     <meta name="keywords" content="php reporting framework">
-    <link rel="shortcut icon" href="<?php echo $root_url; ?>/assets/images/bar.png">
+    <link rel="shortcut icon" href="/assets/images/bar.png">
     <title>KoolReport Examples &amp; Demonstration</title>
 
-    <link href="<?php echo $root_url; ?>/assets/fontawesome/font-awesome.min.css" rel="stylesheet">
-    <link href="<?php echo $root_url; ?>/assets/simpleline/simple-line-icons.min.css" rel="stylesheet">
-    <link href="<?php echo $root_url; ?>/assets/theme/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo $root_url; ?>/assets/theme/css/main.css" rel="stylesheet">
+    <link href="/assets/fontawesome/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/simpleline/simple-line-icons.min.css" rel="stylesheet">
+    <link href="/assets/theme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/theme/css/main.css" rel="stylesheet">
 
 
-    <script type="text/javascript" src="<?php echo $root_url; ?>/assets/theme/js/jquery.min.js"></script>
-    <script type="text/javascript" src="<?php echo $root_url; ?>/assets/theme/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/assets/theme/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/theme/js/bootstrap.bundle.min.js"></script>
 </head>
 <style>
     .fa-plus-square-o,

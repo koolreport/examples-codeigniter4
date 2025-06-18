@@ -1,5 +1,6 @@
 <?php
-// if (session_status() !== PHP_SESSION_ACTIVE) session_start();
+\Config\Services::session();
+
 
 require_once "MyReport.php";
 $report = new MyReport;
@@ -69,7 +70,7 @@ if (!isset($_POST['command'])) {
                 e.preventDefault();
                 $.ajax({
                     type: "POST",
-                    url: 'run.php',
+                    // url: "run.php",
                     data: {
                         command: 'randomize',
                     },
@@ -82,7 +83,7 @@ if (!isset($_POST['command'])) {
                 e.preventDefault();
                 $.ajax({
                     type: "POST",
-                    url: 'run.php',
+                    // url: "run.php",
                     data: {
                         command: 'addDataset',
                     },
@@ -95,7 +96,7 @@ if (!isset($_POST['command'])) {
                 e.preventDefault();
                 $.ajax({
                     type: "POST",
-                    url: 'run.php',
+                    // url: "run.php",
                     data: {
                         command: 'removeDataset',
                     },
