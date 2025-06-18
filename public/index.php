@@ -43,7 +43,7 @@ if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
  * and fires up an environment-specific bootstrapping.
  */
 
-require_once __DIR__.'/../../GitHub-KoolReport/core/autoload.php';
+require_once __DIR__.'/../vendor/autoload.php';
 
 // LOAD OUR PATHS CONFIG FILE
 // This is the line that might need to be changed, depending on your folder structure.

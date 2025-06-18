@@ -49,7 +49,7 @@ if (!isset($_POST['command'])) {
                 e.preventDefault();
                 $.ajax({
                     type: "POST",
-                    url:'run.php',
+                    // url: "run.php",
                     data: {
                         command: "randomizeData"
                     },

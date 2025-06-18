@@ -1,5 +1,6 @@
 <?php
-// if (session_status() !== PHP_SESSION_ACTIVE) session_start();
+\Config\Services::session();
+
 
 require_once "MyReport.php";
 
@@ -36,6 +37,7 @@ if (!isset($_POST['command'])) {
     <title>
         Line Chart
     </title>
+
 </head>
 
 <body>
@@ -52,7 +54,7 @@ if (!isset($_POST['command'])) {
                 e.preventDefault();
                 $.ajax({
                     type: "POST",
-                    url: "run.php",
+                    // url: "run.php",
                     data: {
                         command: 'randomizeData',
                     },
@@ -65,7 +67,7 @@ if (!isset($_POST['command'])) {
                 e.preventDefault();
                 $.ajax({
                     type: "POST",
-                    url: "run.php",
+                    // url: "run.php",
                     data: {
                         command: 'addDataset'
                     },
@@ -78,7 +80,7 @@ if (!isset($_POST['command'])) {
                 e.preventDefault();
                 $.ajax({
                     type: "POST",
-                    url: "run.php",
+                    // url: "run.php",
                     data: {
                         command: 'removeDataset'
                     },
@@ -91,7 +93,7 @@ if (!isset($_POST['command'])) {
                 e.preventDefault();
                 $.ajax({
                     type: "POST",
-                    url: "run.php",
+                    // url: "run.php",
                     data: {
                         command: 'addData'
                     },
@@ -104,7 +106,7 @@ if (!isset($_POST['command'])) {
                 e.preventDefault();
                 $.ajax({
                     type: "POST",
-                    url: "run.php",
+                    // url: "run.php",
                     data: {
                         command: 'removeData'
                     },

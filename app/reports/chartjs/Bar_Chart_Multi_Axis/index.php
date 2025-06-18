@@ -1,3 +1,4 @@
 <?php
-// if (session_status() !== PHP_SESSION_ACTIVE) session_start();
+\Config\Services::session();
+
 include "../../../helpers/run.example.php";

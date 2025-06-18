@@ -1,5 +1,6 @@
 <?php
-// if (session_status() !== PHP_SESSION_ACTIVE) session_start();
+\Config\Services::session();
+
 
 require_once "MyReport.php";
 $report = new MyReport;
