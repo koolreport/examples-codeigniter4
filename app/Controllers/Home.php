@@ -23,9 +23,11 @@ class Home extends BaseController
 
 	public function report()
 	{
+		// echo "Home controller -> report()<br>";
 		// FCPATH   -> 'path/to/myCodeIgniter/public/'
 		// APPPATH  -> 'path/to/myCodeIgniter/app/'
 		// echo "uri_string=" . uri_string() . "<br>";
+		// echo "root_url: $root_url<br>";
 		$uri_string = uri_string();
 		$uri_string = rtrim($uri_string, "/");
 		$report_path = APPPATH . $uri_string . "/";

@@ -1,5 +1,4 @@
 <?php
-use \koolreport\pivot\widgets\PivotTable;
 use \koolreport\widgets\koolphp\Table;
 ?>
 <div class="report-content">
